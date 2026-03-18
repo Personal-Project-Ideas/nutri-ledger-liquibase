@@ -1,6 +1,6 @@
 # 📦 Liquibase Migration Project
 
-This repository contains the database migrations for the [`my-train-track-api`](https://github.com/marceloprates/my-train-track-api) project using [Liquibase](https://www.liquibase.org/).
+This repository contains the database migrations for the [`nutri-ledger-api`](https://github.com/Personal-Project-Ideas/nutri-ledger-api) project using [Liquibase](https://www.liquibase.org/).
 
 ---
 
@@ -42,7 +42,7 @@ POSTGRES_PORT=5432
 
 All commands and services depend on these variables. Make sure your .env is correctly configured before running any operation.
 
-## 🧰  Makefile Commands
+## 🧰 Makefile Commands
 
 Run these commands from the root directory:
 
@@ -50,7 +50,7 @@ Run these commands from the root directory:
 
   ```sh
      make liquibase-update-dev
-    ```
+  ```
 
 - ↩️ Roll back last migration (development)
 
