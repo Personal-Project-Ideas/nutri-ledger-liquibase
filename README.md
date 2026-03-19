@@ -86,9 +86,11 @@ This will create a file inside migrations/ with the current timestamp and the gi
 
 ### 🔗 Related
 
-API repository: my-train-track-api
+API repository: nutri-ledger-api
 
 #### 📝 Notes
 
 Use the new-migration command to generate migration files manually.
 Make sure your Liquibase changes are idempotent and safe to rerun.
+
+![Er- Diagram](image.png)

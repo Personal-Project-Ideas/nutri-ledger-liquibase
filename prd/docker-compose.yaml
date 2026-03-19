@@ -1,6 +1,14 @@
-version: '3.9'
+version: "3.9"
 
 services:
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - trainingLog-net
   liquibase:
     build:
       context: ../
@@ -22,3 +30,7 @@ services:
 networks:
   trainingLog-net:
     driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
