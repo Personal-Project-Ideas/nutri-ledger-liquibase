@@ -93,4 +93,4 @@ API repository: nutri-ledger-api
 Use the new-migration command to generate migration files manually.
 Make sure your Liquibase changes are idempotent and safe to rerun.
 
-![Er- Diagram](image.png)
+![Er- Diagram](image-1.png)

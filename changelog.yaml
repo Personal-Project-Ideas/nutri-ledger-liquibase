@@ -4,3 +4,13 @@ databaseChangeLog:
       author: Prates
       tagDatabase:
         tag: v1.0.0
+  - include:
+      file: ./migrations/20260319150512_create_schema.sql
+  - include:
+      file: ./migrations/20260319150926_create_table_users.sql
+  - include:
+      file: ./migrations/20260319152451_create_table_food_portions.sql
+  - include:
+      file: ./migrations/20260319152459_create_table_meals.sql
+  - include:
+      file: ./migrations/20260319152518_create_table_meal_items.sql

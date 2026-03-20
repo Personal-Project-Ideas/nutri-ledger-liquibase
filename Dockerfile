@@ -1,5 +1,8 @@
 FROM liquibase/liquibase
 
+# Baixa o driver JDBC do PostgreSQL
+RUN wget -O /liquibase/lib/postgresql.jar https://jdbc.postgresql.org/download/postgresql-42.7.2.jar
+
 COPY changelog.yaml changelog.yaml
 COPY migrations/ migrations/
 

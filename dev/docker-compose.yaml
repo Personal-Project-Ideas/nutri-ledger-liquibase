@@ -5,21 +5,19 @@ services:
     image: postgres:15-alpine
     env_file:
       - ../.env
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_NAME}
     volumes:
       - nutri_ledger_pg_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5434:5432"
     networks:
       - nutriLedger-net
 
   nutri_ledger_mongo:
-    image: mongo:6.0
+    image: mongo:7.0
+    env_file:
+      - ../.env
     ports:
-      - "27018:27018"
+      - "27018:27017"
     volumes:
       - nutri_ledger_mongo_data:/data/db
     networks:
@@ -33,12 +31,6 @@ services:
       - ../.env
     depends_on:
       - nutri_ledger_pg
-    environment:
-      POSTGRES_HOST: nutri_ledger_pg
-      POSTGRES_PORT: 5434
-      POSTGRES_DB: ${POSTGRES_NAME}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ../changelog.yaml:/changelog.yaml:ro
       - ../migrations:/migrations:ro

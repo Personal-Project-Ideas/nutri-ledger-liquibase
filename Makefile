@@ -21,14 +21,14 @@ down-dev:
 	docker-compose --env-file .env -f dev/docker-compose.yaml down
 
 liquibase-update-dev:
-	docker-compose --env-file .env -f dev/docker-compose.yaml run --rm liquibase sh -c "liquibase update --changelog-file=changelog.yaml --url='jdbc:postgresql://$$POSTGRES_HOST:$$POSTGRES_PORT/$$POSTGRES_NAME' --username=$$POSTGRES_USER --password=$$POSTGRES_PASSWORD --logLevel=info"
+	docker-compose --env-file .env -f dev/docker-compose.yaml run --rm liquibase_nutri_ledger sh -c "liquibase update --changelog-file=$$CHANGELOG_FILE --url='jdbc:postgresql://$$POSTGRES_HOST:$$POSTGRES_PORT/$$POSTGRES_DB' --username=$$POSTGRES_USER --password=$$POSTGRES_PASSWORD --logLevel=$$LOGLEVEL"
 
  
 liquibase-rollback-dev:
-	docker-compose --env-file .env -f dev/docker-compose.yaml run --rm liquibase rollbackCount $(count)
+	docker-compose --env-file .env -f dev/docker-compose.yaml run --rm liquibase_nutri_ledger sh -c "liquibase rollbackCount $(count) --changelog-file=changelog.yaml --url='jdbc:postgresql://$$POSTGRES_HOST:$$POSTGRES_PORT/$$POSTGRES_DB' --username=$$POSTGRES_USER --password=$$POSTGRES_PASSWORD --logLevel=info"
 
 liquibase-status-dev:
-	docker-compose --env-file .env -f dev/docker-compose.yaml run --rm liquibase status --verbose
+	docker-compose --env-file .env -f dev/docker-compose.yaml run --rm liquibase_nutri_ledger sh -c "liquibase status --verbose"
 
 # -----------------------------
 # Production environment
@@ -41,7 +41,7 @@ down-prd:
 	docker-compose --env-file .env -f prd/docker-compose.yaml down
 
 liquibase-update-prd:
-	docker-compose --env-file ../.env -f prd/docker-compose.yaml run --rm liquibase update --changelog-file=changelog.yaml --url "jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_NAME}" --username=${POSTGRES_USER} --password=${POSTGRES_PASSWORD} --logLevel=info
+	docker-compose --env-file ../.env -f prd/docker-compose.yaml run --rm liquibase update --changelog-file=changelog.yaml --url "jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}" --username=${POSTGRES_USER} --password=${POSTGRES_PASSWORD} --logLevel=info
 
 liquibase-rollback-prd:
 	docker-compose --env-file .env -f prd/docker-compose.yaml run --rm liquibase rollbackCount $(count)
