@@ -14,3 +14,7 @@ databaseChangeLog:
       file: ./migrations/20260319152459_create_table_meals.sql
   - include:
       file: ./migrations/20260319152518_create_table_meal_items.sql
+  - include:
+      file: ./migrations/20260328191837_create_table_allowed-users.sql
+  - include:
+      file: ./migrations/20260328191900_seed_table_allowed_users.sql
